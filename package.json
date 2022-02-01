@@ -10,6 +10,7 @@
   "author": "Abdulmalik Elghedafi",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^17.0.14"
+    "@types/node": "^17.0.14",
+    "express": "^4.17.2"
   }
 }
