@@ -3,3 +3,7 @@
 /workspace.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# ignore bin directory
+.bin/
+# ignore any files with .obj postfix
+*.obj
