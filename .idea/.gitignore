@@ -7,3 +7,5 @@
 .bin/
 # ignore any files with .obj postfix
 *.obj
+/node_modules/
+/config
