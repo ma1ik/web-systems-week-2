@@ -2,12 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lab 2 | Week 2 | Enterprise Web Systems</title>
+    <title>Lab 3 | Week 3 | Enterprise Web Systems</title>
 </head>
-<body>
-    <h1>Enterprise Web Systems Week 2 for the lab at RGU</h1>
-    <p>My lecturer for this module is Pam</p>
-    <p>She is an awesome and kind teacher!</p>
+<body onload="makeRequest();">
+
+<h1>Enterprise Web Systems Week 2 for the lab at RGU</h1>
+<p>My lecturer for this module is Pam</p>
+<p>She is an awesome and kind teacher!</p>
+
+<script>
+    var req;
+
+    function makeRequest() {
+        if (window.XMLHttpRequest) {
+            req = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {
+            req = new ActiveXObject("Msxml2.XMLHTTP");
+        }
+        else {
+            // Ajax not supported
+            return;
+        }
+
+        req.onreadystatechange = function() {
+            var txt = "";
+            if (this.readyState == 4 && this.status == 200) {
+                var response = this.responseText;
+                console.log (response);
+                document.getElementById("answer").innerHTML = response;
+            }
+        };
+
+    }
+
+    function doStuff() {
+        var input1 = document.getElementById("input1").value;
+        var input2 = document.getElementById("input2").value;
+
+        req.open("GET", "/admin/users/login?input1=" + input1 + "&input2=" + input2, true);
+        req.send();
+        //var params = 'input1=' + input1 + '&input2=' + input2;
+        //req.open('POST', '/login?', true);
+        //req.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        //req.send(params);
+
+    }
+</script>
+
+<p>Input 1: <input type="text" id="input1"></p>
+<p>Input 2: <input type="text" id="input2"></p>
+
+
+<h1>Response</h1>
+
+<p id="answer">Server response will go here</p>
+
+<input type="button" value="Do it!" onclick="doStuff();">
 
 
 </body>
